@@ -9,26 +9,32 @@ public class Entrada {
 	private String precio = null;
 	private Date fechaCompra = null;
 
-	public Entrada() {
+	private Sesion sesion = null;
+	private Cliente cliente = null;
 
+	@Override
+	public String toString() {
+		return "Entrada [idEntrada=" + idEntrada + ", precio=" + precio + ", fechaCompra=" + fechaCompra + ", sesion="
+				+ sesion + ", cliente=" + cliente + "]";
 	}
 
-	/**
-	 * Constructor sobrecargado
-	 * 
-	 * @param Dni
-	 * @param Nombre
-	 * @param Apellidos
-	 * @param Sexo
-	 * @param Contrasenna
-	 * @param UserName
-	 */
-	public Entrada(String idEntrada, String precio, Date fechaCompra) {
-		super();
-		this.idEntrada = idEntrada;
-		this.precio = precio;
-		this.fechaCompra = fechaCompra;
+	@Override
+	public int hashCode() {
+		return Objects.hash(cliente, fechaCompra, idEntrada, precio, sesion);
+	}
 
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Entrada other = (Entrada) obj;
+		return Objects.equals(cliente, other.cliente) && Objects.equals(fechaCompra, other.fechaCompra)
+				&& Objects.equals(idEntrada, other.idEntrada) && Objects.equals(precio, other.precio)
+				&& Objects.equals(sesion, other.sesion);
 	}
 
 	public String getIdEntrada() {
@@ -55,27 +61,20 @@ public class Entrada {
 		this.fechaCompra = fechaCompra;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(fechaCompra, idEntrada, precio);
+	public Sesion getSesion() {
+		return sesion;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Entrada other = (Entrada) obj;
-		return Objects.equals(fechaCompra, other.fechaCompra) && Objects.equals(idEntrada, other.idEntrada)
-				&& Objects.equals(precio, other.precio);
+	public void setSesion(Sesion sesion) {
+		this.sesion = sesion;
 	}
 
-	@Override
-	public String toString() {
-		return "Entrada [idEntrada=" + idEntrada + ", precio=" + precio + ", fechaCompra=" + fechaCompra + "]";
+	public Cliente getCliente() {
+		return cliente;
+	}
+
+	public void setCliente(Cliente cliente) {
+		this.cliente = cliente;
 	}
 
 }

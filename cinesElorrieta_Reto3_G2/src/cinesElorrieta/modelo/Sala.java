@@ -1,5 +1,6 @@
 package cinesElorrieta.modelo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Sala {
@@ -7,13 +8,17 @@ public class Sala {
 	private Integer idCine = null;
 	private Integer idSala = null;
 	private String nombre = null;
-	
+
+	private Cine cine = null;
+
+	private ArrayList<Sesion> sesiones = null;
+
 	public Sala() {
-		
+
 	}
-	
+
 	/**
-	 *Contructor sobrecargado
+	 * Contructor sobrecargado
 	 * 
 	 * @param idCine
 	 * @param idSala
@@ -72,7 +77,5 @@ public class Sala {
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-	
-	
-	
+
 }

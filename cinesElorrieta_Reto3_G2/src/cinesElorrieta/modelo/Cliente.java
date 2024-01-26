@@ -1,5 +1,6 @@
 package cinesElorrieta.modelo;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 public class Cliente {
@@ -11,28 +12,32 @@ public class Cliente {
 	private String contrasenna = null;
 	private String userName = null;
 
-	public Cliente() {
+	private ArrayList<Entrada> entradas = null;
 
+	@Override
+	public String toString() {
+		return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", sexo=" + sexo
+				+ ", contrasenna=" + contrasenna + ", userName=" + userName + ", entradas=" + entradas + "]";
 	}
 
-	/**
-	 * Constructor sobrecargado
-	 * 
-	 * @param Dni
-	 * @param Nombre
-	 * @param Apellidos
-	 * @param Sexo
-	 * @param Contrasenna
-	 * @param UserName
-	 */
-	public Cliente(String dni, String nombre, String apellidos, String sexo, String contrasenna, String userName) {
-		super();
-		this.dni = dni;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.sexo = sexo;
-		this.contrasenna = contrasenna;
-		this.userName = userName;
+	@Override
+	public int hashCode() {
+		return Objects.hash(apellidos, contrasenna, dni, entradas, nombre, sexo, userName);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Cliente other = (Cliente) obj;
+		return Objects.equals(apellidos, other.apellidos) && Objects.equals(contrasenna, other.contrasenna)
+				&& Objects.equals(dni, other.dni) && Objects.equals(entradas, other.entradas)
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(sexo, other.sexo)
+				&& Objects.equals(userName, other.userName);
 	}
 
 	public String getDni() {
@@ -83,29 +88,12 @@ public class Cliente {
 		this.userName = userName;
 	}
 
-	@Override
-	public int hashCode() {
-		return Objects.hash(apellidos, contrasenna, dni, nombre, sexo, userName);
+	public ArrayList<Entrada> getEntradas() {
+		return entradas;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Cliente other = (Cliente) obj;
-		return Objects.equals(apellidos, other.apellidos) && Objects.equals(contrasenna, other.contrasenna)
-				&& Objects.equals(dni, other.dni) && Objects.equals(nombre, other.nombre)
-				&& Objects.equals(sexo, other.sexo) && Objects.equals(userName, other.userName);
-	}
-
-	@Override
-	public String toString() {
-		return "Cliente [dni=" + dni + ", nombre=" + nombre + ", apellidos=" + apellidos + ", sexo=" + sexo
-				+ ", contrasenna=" + contrasenna + ", userName=" + userName + "]";
+	public void setEntradas(ArrayList<Entrada> entradas) {
+		this.entradas = entradas;
 	}
 
 }
