@@ -8,6 +8,7 @@ public class Sala {
 	private Integer idCine = null;
 	private Integer idSala = null;
 	private String nombre = null;
+	//h
 
 	private Cine cine = null;
 
