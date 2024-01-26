@@ -13,6 +13,11 @@ public class Pelicula {
 
 	private ArrayList<Sesion> sesiones = null;
 
+
+	public Pelicula() {
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public String toString() {
 		return "Pelicula [idPelicula=" + idPelicula + ", nombre=" + nombre + ", duracion=" + duracion + ", genero="
@@ -47,6 +52,9 @@ public class Pelicula {
 	}
 
 	public String getNombre() {
+		
+		nombre = "Deadpool";
+		
 		return nombre;
 	}
 
