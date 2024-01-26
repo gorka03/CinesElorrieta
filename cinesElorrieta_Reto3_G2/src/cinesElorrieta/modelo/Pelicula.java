@@ -13,37 +13,15 @@ public class Pelicula {
 
 	private ArrayList<Sesion> sesiones = null;
 
-	public Pelicula() {
-
-	}
-
-	/**
-	 * Contructor sobrecargado
-	 * 
-	 * @param idPelicula
-	 * @param nombre
-	 * @param duracion
-	 * @param genero
-	 * @param coste
-	 */
-	public Pelicula(Integer idPelicula, String nombre, Integer duracion, String genero, Double coste) {
-		super();
-		this.idPelicula = idPelicula;
-		this.nombre = nombre;
-		this.duracion = duracion;
-		this.genero = genero;
-		this.coste = coste;
-	}
-
 	@Override
 	public String toString() {
-		return "Peliculas [idPelicula=" + idPelicula + ", nombre=" + nombre + ", duracion=" + duracion + ", genero="
-				+ genero + ", coste=" + coste + "]";
+		return "Pelicula [idPelicula=" + idPelicula + ", nombre=" + nombre + ", duracion=" + duracion + ", genero="
+				+ genero + ", coste=" + coste + ", sesiones=" + sesiones + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(coste, duracion, genero, idPelicula, nombre);
+		return Objects.hash(coste, duracion, genero, idPelicula, nombre, sesiones);
 	}
 
 	@Override
@@ -57,7 +35,7 @@ public class Pelicula {
 		Pelicula other = (Pelicula) obj;
 		return Objects.equals(coste, other.coste) && Objects.equals(duracion, other.duracion)
 				&& Objects.equals(genero, other.genero) && Objects.equals(idPelicula, other.idPelicula)
-				&& Objects.equals(nombre, other.nombre);
+				&& Objects.equals(nombre, other.nombre) && Objects.equals(sesiones, other.sesiones);
 	}
 
 	public Integer getIdPelicula() {
@@ -98,6 +76,14 @@ public class Pelicula {
 
 	public void setCoste(Double coste) {
 		this.coste = coste;
+	}
+
+	public ArrayList<Sesion> getSesiones() {
+		return sesiones;
+	}
+
+	public void setSesiones(ArrayList<Sesion> sesiones) {
+		this.sesiones = sesiones;
 	}
 
 }

@@ -13,32 +13,15 @@ public class Sala {
 
 	private ArrayList<Sesion> sesiones = null;
 
-	public Sala() {
-
-	}
-
-	/**
-	 * Contructor sobrecargado
-	 * 
-	 * @param idCine
-	 * @param idSala
-	 * @param nombre
-	 */
-	public Sala(Integer idCine, Integer idSala, String nombre) {
-		super();
-		this.idCine = idCine;
-		this.idSala = idSala;
-		this.nombre = nombre;
-	}
-
 	@Override
 	public String toString() {
-		return "Sala [idCine=" + idCine + ", idSala=" + idSala + ", nombre=" + nombre + "]";
+		return "Sala [idCine=" + idCine + ", idSala=" + idSala + ", nombre=" + nombre + ", cine=" + cine + ", sesiones="
+				+ sesiones + "]";
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(idCine, idSala, nombre);
+		return Objects.hash(cine, idCine, idSala, nombre, sesiones);
 	}
 
 	@Override
@@ -50,8 +33,9 @@ public class Sala {
 		if (getClass() != obj.getClass())
 			return false;
 		Sala other = (Sala) obj;
-		return Objects.equals(idCine, other.idCine) && Objects.equals(idSala, other.idSala)
-				&& Objects.equals(nombre, other.nombre);
+		return Objects.equals(cine, other.cine) && Objects.equals(idCine, other.idCine)
+				&& Objects.equals(idSala, other.idSala) && Objects.equals(nombre, other.nombre)
+				&& Objects.equals(sesiones, other.sesiones);
 	}
 
 	public Integer getIdCine() {
@@ -76,6 +60,22 @@ public class Sala {
 
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public Cine getCine() {
+		return cine;
+	}
+
+	public void setCine(Cine cine) {
+		this.cine = cine;
+	}
+
+	public ArrayList<Sesion> getSesiones() {
+		return sesiones;
+	}
+
+	public void setSesiones(ArrayList<Sesion> sesiones) {
+		this.sesiones = sesiones;
 	}
 
 }
