@@ -12,7 +12,7 @@ public class Pelicula {
 	private Double coste = null;
 
 	private ArrayList<Sesion> sesiones = null;
-	//h
+	//hc
 	@Override
 	public String toString() {
 		return "Pelicula [idPelicula=" + idPelicula + ", nombre=" + nombre + ", duracion=" + duracion + ", genero="
