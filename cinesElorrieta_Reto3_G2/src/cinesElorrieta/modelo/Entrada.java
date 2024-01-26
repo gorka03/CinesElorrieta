@@ -1,12 +1,13 @@
 package cinesElorrieta.modelo;
 
+import java.util.Date;
 import java.util.Objects;
 
 public class Entrada {
 
 	private String idEntrada = null;
 	private String precio = null;
-	private String fechaCompra = null;
+	private Date fechaCompra = null;
 
 	public Entrada() {
 
@@ -22,7 +23,7 @@ public class Entrada {
 	 * @param Contrasenna
 	 * @param UserName
 	 */
-	public Entrada(String idEntrada, String precio, String fechaCompra) {
+	public Entrada(String idEntrada, String precio, Date fechaCompra) {
 		super();
 		this.idEntrada = idEntrada;
 		this.precio = precio;
@@ -46,11 +47,11 @@ public class Entrada {
 		this.precio = precio;
 	}
 
-	public String getFechaCompra() {
+	public Date getFechaCompra() {
 		return fechaCompra;
 	}
 
-	public void setFechaCompra(String fechaCompra) {
+	public void setFechaCompra(Date fechaCompra) {
 		this.fechaCompra = fechaCompra;
 	}
 
