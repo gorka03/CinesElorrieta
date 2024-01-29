@@ -20,6 +20,21 @@ public class Pelicula implements Serializable {
 
 	private ArrayList<Sesion> sesiones = null;
 
+	public Pelicula(int idPelicula, String nombre, int duracion, String genero, double coste,
+			ArrayList<Sesion> sesiones) {
+		super();
+		this.idPelicula = idPelicula;
+		this.nombre = nombre;
+		this.duracion = duracion;
+		this.genero = genero;
+		this.coste = coste;
+		this.sesiones = sesiones;
+	}
+
+	public Pelicula() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getIdPelicula() {
 		return idPelicula;
 	}
@@ -29,9 +44,7 @@ public class Pelicula implements Serializable {
 	}
 
 	public String getNombre() {
-
 		String nombre = "Deadpool";
-
 		return nombre;
 	}
 
@@ -49,7 +62,7 @@ public class Pelicula implements Serializable {
 	}
 
 	public String getGenero() {
-		String genero = "Drama";
+		String genero = "Superheroes";
 		return genero;
 	}
 
