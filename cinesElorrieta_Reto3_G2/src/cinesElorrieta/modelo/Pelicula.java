@@ -30,7 +30,7 @@ public class Pelicula implements Serializable {
 
 	public String getNombre() {
 
-		nombre = "Deadpool";
+		String nombre = "Deadpool";
 
 		return nombre;
 	}
@@ -40,6 +40,7 @@ public class Pelicula implements Serializable {
 	}
 
 	public int getDuracion() {
+		int duracion = 2;
 		return duracion;
 	}
 
@@ -48,6 +49,7 @@ public class Pelicula implements Serializable {
 	}
 
 	public String getGenero() {
+		String genero = "Drama";
 		return genero;
 	}
 
@@ -56,6 +58,7 @@ public class Pelicula implements Serializable {
 	}
 
 	public double getCoste() {
+		double coste = 2;
 		return coste;
 	}
 
