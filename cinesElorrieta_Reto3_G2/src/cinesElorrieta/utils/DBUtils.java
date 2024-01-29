@@ -1,4 +1,4 @@
-package cinesElorrieta.Utils;
+package cinesElorrieta.utils;
 
 public class DBUtils {
 

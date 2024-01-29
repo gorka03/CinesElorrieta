@@ -1,11 +1,14 @@
 package cinesElorrieta.modelo;
 
+import java.io.Serializable;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Sesion {
+public class Sesion implements Serializable {
+
+	private static final long serialVersionUID = 5907433168562924658L;
 
 	private int idSesion = 0;
 	private Date fecha = null;
@@ -16,33 +19,6 @@ public class Sesion {
 	private Pelicula pelicula = null;
 
 	private ArrayList<Entrada> entradas = null;
-
-	@Override
-	public String toString() {
-		return "Sesion [idSesion=" + idSesion + ", fecha=" + fecha + ", horario=" + horario + ", precio=" + precio
-				+ ", sala=" + sala + ", pelicula=" + pelicula + ", entradas=" + entradas + "]";
-	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(entradas, fecha, horario, idSesion, pelicula, precio, sala);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Sesion other = (Sesion) obj;
-		return Objects.equals(entradas, other.entradas) && Objects.equals(fecha, other.fecha)
-				&& Objects.equals(horario, other.horario) && idSesion == other.idSesion
-				&& Objects.equals(pelicula, other.pelicula)
-				&& Double.doubleToLongBits(precio) == Double.doubleToLongBits(other.precio)
-				&& Objects.equals(sala, other.sala);
-	}
 
 	public int getIdSesion() {
 		return idSesion;
@@ -98,6 +74,37 @@ public class Sesion {
 
 	public void setEntradas(ArrayList<Entrada> entradas) {
 		this.entradas = entradas;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(entradas, fecha, horario, idSesion, pelicula, precio, sala);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Sesion other = (Sesion) obj;
+		return Objects.equals(entradas, other.entradas) && Objects.equals(fecha, other.fecha)
+				&& Objects.equals(horario, other.horario) && idSesion == other.idSesion
+				&& Objects.equals(pelicula, other.pelicula)
+				&& Double.doubleToLongBits(precio) == Double.doubleToLongBits(other.precio)
+				&& Objects.equals(sala, other.sala);
+	}
+
+	@Override
+	public String toString() {
+		return "Sesion [idSesion=" + idSesion + ", fecha=" + fecha + ", horario=" + horario + ", precio=" + precio
+				+ ", sala=" + sala + ", pelicula=" + pelicula + ", entradas=" + entradas + "]";
 	}
 
 }

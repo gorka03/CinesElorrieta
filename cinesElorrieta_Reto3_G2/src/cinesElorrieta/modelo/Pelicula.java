@@ -1,27 +1,78 @@
 package cinesElorrieta.modelo;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Objects;
 
-public class Pelicula {
+/**
+ * Clase que define una Pelicula de la BBDD
+ */
 
-	private Integer idPelicula = null;
+public class Pelicula implements Serializable {
+
+	private static final long serialVersionUID = -1963071720222039522L;
+
+	private int idPelicula = 0;
 	private String nombre = null;
-	private Integer duracion = null;
+	private int duracion = 0;
 	private String genero = null;
-	private Double coste = null;
+	private double coste = 0;
 
 	private ArrayList<Sesion> sesiones = null;
 
-
-	public Pelicula() {
-		// TODO Auto-generated constructor stub
+	public int getIdPelicula() {
+		return idPelicula;
 	}
 
-	@Override
-	public String toString() {
-		return "Pelicula [idPelicula=" + idPelicula + ", nombre=" + nombre + ", duracion=" + duracion + ", genero="
-				+ genero + ", coste=" + coste + ", sesiones=" + sesiones + "]";
+	public void setIdPelicula(int idPelicula) {
+		this.idPelicula = idPelicula;
+	}
+
+	public String getNombre() {
+
+		nombre = "Deadpool";
+
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+
+	public int getDuracion() {
+		return duracion;
+	}
+
+	public void setDuracion(int duracion) {
+		this.duracion = duracion;
+	}
+
+	public String getGenero() {
+		return genero;
+	}
+
+	public void setGenero(String genero) {
+		this.genero = genero;
+	}
+
+	public double getCoste() {
+		return coste;
+	}
+
+	public void setCoste(double coste) {
+		this.coste = coste;
+	}
+
+	public ArrayList<Sesion> getSesiones() {
+		return sesiones;
+	}
+
+	public void setSesiones(ArrayList<Sesion> sesiones) {
+		this.sesiones = sesiones;
+	}
+
+	public static long getSerialversionuid() {
+		return serialVersionUID;
 	}
 
 	@Override
@@ -38,60 +89,15 @@ public class Pelicula {
 		if (getClass() != obj.getClass())
 			return false;
 		Pelicula other = (Pelicula) obj;
-		return Objects.equals(coste, other.coste) && Objects.equals(duracion, other.duracion)
-				&& Objects.equals(genero, other.genero) && Objects.equals(idPelicula, other.idPelicula)
+		return Double.doubleToLongBits(coste) == Double.doubleToLongBits(other.coste) && duracion == other.duracion
+				&& Objects.equals(genero, other.genero) && idPelicula == other.idPelicula
 				&& Objects.equals(nombre, other.nombre) && Objects.equals(sesiones, other.sesiones);
 	}
 
-	public Integer getIdPelicula() {
-		return idPelicula;
-	}
-
-	public void setIdPelicula(Integer idPelicula) {
-		this.idPelicula = idPelicula;
-	}
-
-	public String getNombre() {
-		
-		nombre = "Deadpool";
-		
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public Integer getDuracion() {
-		return duracion;
-	}
-
-	public void setDuracion(Integer duracion) {
-		this.duracion = duracion;
-	}
-
-	public String getGenero() {
-		return genero;
-	}
-
-	public void setGenero(String genero) {
-		this.genero = genero;
-	}
-
-	public Double getCoste() {
-		return coste;
-	}
-
-	public void setCoste(Double coste) {
-		this.coste = coste;
-	}
-
-	public ArrayList<Sesion> getSesiones() {
-		return sesiones;
-	}
-
-	public void setSesiones(ArrayList<Sesion> sesiones) {
-		this.sesiones = sesiones;
+	@Override
+	public String toString() {
+		return "Pelicula [idPelicula=" + idPelicula + ", nombre=" + nombre + ", duracion=" + duracion + ", genero="
+				+ genero + ", coste=" + coste + ", sesiones=" + sesiones + "]";
 	}
 
 }
