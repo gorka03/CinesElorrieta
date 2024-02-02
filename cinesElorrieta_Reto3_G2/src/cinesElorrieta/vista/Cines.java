@@ -39,7 +39,7 @@ public class Cines extends JFrame {
 	 */
 	public Cines() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 830, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -47,7 +47,7 @@ public class Cines extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panelCines = new JPanel();
-		panelCines.setBounds(0, 0, 435, 260);
+		panelCines.setBounds(0, 0, 815, 430);
 		contentPane.add(panelCines);
 		panelCines.setLayout(null);
 		
@@ -80,6 +80,13 @@ public class Cines extends JFrame {
 		panelCines.add(tablePeliculas);
 		
 		JButton btnVolver = new JButton("Volver ???");
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				setVisible(false);
+				new Bienvenida().setVisible(true);
+			}
+		});
 		btnVolver.setBounds(220, 227, 89, 23);
 		panelCines.add(btnVolver);
 	}
