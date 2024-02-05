@@ -41,8 +41,7 @@ public class Cines {
 				paneles.get(1).setVisible(false);
 				paneles.get(2).setVisible(true);
 				paneles.get(3).setVisible(false);
-				paneles.get(4).setVisible(false);
-				paneles.get(5).setVisible(false);
+
 			}
 		});
 		btnInicioSesion.setBounds(64, 374, 121, 27);
@@ -55,8 +54,6 @@ public class Cines {
 				paneles.get(1).setVisible(false);
 				paneles.get(2).setVisible(false);
 				paneles.get(3).setVisible(false);
-				paneles.get(4).setVisible(false);
-				paneles.get(5).setVisible(false);
 
 			}
 		});
@@ -80,8 +77,6 @@ public class Cines {
 				paneles.get(1).setVisible(false);
 				paneles.get(2).setVisible(false);
 				paneles.get(3).setVisible(false);
-				paneles.get(4).setVisible(false);
-				paneles.get(5).setVisible(false);
 
 			}
 		});

@@ -14,8 +14,8 @@ import javax.swing.JPasswordField;
 
 public class Login {
 
-	private JTextField textField= null;
-	private JPasswordField passwordField= null;
+	private JTextField textField = null;
+	private JPasswordField passwordField = null;
 	private JPanel panel = null;
 
 	public Login(ArrayList<JPanel> paneles) {
@@ -44,6 +44,11 @@ public class Login {
 		btnLogin.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		btnLogin.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				paneles.get(0).setVisible(false);
+				paneles.get(1).setVisible(false);
+				paneles.get(2).setVisible(false);
+				paneles.get(3).setVisible(false);
+
 			}
 		});
 		btnLogin.setBounds(277, 206, 140, 30);
@@ -51,6 +56,15 @@ public class Login {
 
 		JButton btnRegistro = new JButton("Registrate !");
 		btnRegistro.setFont(new Font("Times New Roman", Font.BOLD, 12));
+		btnRegistro.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				paneles.get(0).setVisible(false);
+				paneles.get(1).setVisible(false);
+				paneles.get(2).setVisible(false);
+				paneles.get(3).setVisible(true);
+
+			}
+		});
 		btnRegistro.setBounds(287, 247, 124, 23);
 		panel.add(btnRegistro);
 

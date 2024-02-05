@@ -69,5 +69,14 @@ public class App {
 		panelesCine.add(panel3);
 		frame.getContentPane().add(panel3);
 
+		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
+		Registro registro = new Registro(panelesCine);
+		JPanel panel4 = registro.getPanel();
+		panel4.setVisible(false);
+
+		// Lo metemos en la lista y en la ventana
+		panelesCine.add(panel4);
+		frame.getContentPane().add(panel4);		
+
 	}
 }

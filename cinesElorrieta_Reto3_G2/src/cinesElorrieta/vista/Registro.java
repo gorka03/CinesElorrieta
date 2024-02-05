@@ -1,124 +1,103 @@
 package cinesElorrieta.vista;
 
-import java.awt.EventQueue;
+import java.awt.Color;
 
-import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import java.awt.Font;
+import java.util.ArrayList;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 
-public class Registro extends JFrame {
+public class Registro {
 
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	private JPanel panel = null;
+
 	private JTextField textDni;
 	private JTextField textNombre;
 	private JTextField textApellido;
 	private JTextField textUsuario;
 	private JPasswordField passwordField;
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Registro frame = new Registro();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	public Registro(ArrayList<JPanel> paneles) {
+		panel = new JPanel();
+		panel.setBounds(0, 0, 650, 470);
 
-	/**
-	 * Create the frame.
-	 */
-	public Registro() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 650, 470);
-		contentPane = new JPanel();
-		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setLayout(null);
 
-		setContentPane(contentPane);
-		contentPane.setLayout(null);
-		
-		JPanel panelRegistro = new JPanel();
-		panelRegistro.setBounds(0, 0, 435, 260);
-		contentPane.add(panelRegistro);
-		panelRegistro.setLayout(null);
-		
 		JLabel lblDni = new JLabel("DNI");
 		lblDni.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblDni.setBounds(60, 21, 86, 14);
-		panelRegistro.add(lblDni);
-		
+		lblDni.setBounds(92, 119, 22, 15);
+		panel.add(lblDni);
+
 		JLabel lblNombre = new JLabel("Nombre");
 		lblNombre.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblNombre.setBounds(60, 51, 86, 14);
-		panelRegistro.add(lblNombre);
-		
+		lblNombre.setBounds(91, 150, 42, 15);
+		panel.add(lblNombre);
+
 		JLabel lblApellido = new JLabel("Apellido");
 		lblApellido.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblApellido.setBounds(60, 81, 86, 14);
-		panelRegistro.add(lblApellido);
-		
+		lblApellido.setBounds(92, 178, 44, 15);
+		panel.add(lblApellido);
+
 		JLabel lblGenero = new JLabel("Genero");
 		lblGenero.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblGenero.setBounds(60, 111, 86, 14);
-		panelRegistro.add(lblGenero);
-		
+		lblGenero.setBounds(92, 204, 39, 15);
+		panel.add(lblGenero);
+
 		JLabel lblUsuario = new JLabel("Usuario");
 		lblUsuario.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblUsuario.setBounds(60, 141, 86, 14);
-		panelRegistro.add(lblUsuario);
-		
+		lblUsuario.setBounds(92, 235, 41, 15);
+		panel.add(lblUsuario);
+
 		JLabel lblContrasenna = new JLabel("Contraseña");
 		lblContrasenna.setFont(new Font("Times New Roman", Font.BOLD, 12));
-		lblContrasenna.setBounds(60, 171, 86, 14);
-		panelRegistro.add(lblContrasenna);
-		
+		lblContrasenna.setBounds(92, 273, 61, 15);
+		panel.add(lblContrasenna);
+
 		JRadioButton rdbtnMujer = new JRadioButton("Mujer");
-		rdbtnMujer.setBounds(152, 102, 109, 23);
-		panelRegistro.add(rdbtnMujer);
-		
+		rdbtnMujer.setBounds(174, 200, 70, 23);
+		panel.add(rdbtnMujer);
+
 		JRadioButton rdbtnHombre = new JRadioButton("Hombre");
-		rdbtnHombre.setBounds(262, 102, 109, 23);
-		panelRegistro.add(rdbtnHombre);
-		
+		rdbtnHombre.setBounds(266, 200, 86, 23);
+		panel.add(rdbtnHombre);
+
 		textDni = new JTextField();
-		textDni.setBounds(163, 15, 122, 20);
-		panelRegistro.add(textDni);
+		textDni.setBounds(174, 116, 86, 20);
+		panel.add(textDni);
 		textDni.setColumns(10);
-		
+
 		textNombre = new JTextField();
 		textNombre.setColumns(10);
-		textNombre.setBounds(163, 45, 122, 20);
-		panelRegistro.add(textNombre);
-		
+		textNombre.setBounds(174, 147, 86, 20);
+		panel.add(textNombre);
+
 		textApellido = new JTextField();
 		textApellido.setColumns(10);
-		textApellido.setBounds(163, 73, 122, 20);
-		panelRegistro.add(textApellido);
+		textApellido.setBounds(174, 175, 86, 20);
+		panel.add(textApellido);
 		
+				JButton btnNewButton = new JButton("Crear usuario");
+				btnNewButton.setBounds(174, 325, 97, 23);
+				panel.add(btnNewButton);
+
 		textUsuario = new JTextField();
 		textUsuario.setColumns(10);
-		textUsuario.setBounds(163, 135, 122, 20);
-		panelRegistro.add(textUsuario);
-		
+		textUsuario.setBounds(174, 232, 86, 20);
+		panel.add(textUsuario);
+
 		passwordField = new JPasswordField();
-		passwordField.setBounds(163, 168, 122, 20);
-		panelRegistro.add(passwordField);
-		
-		JButton btnNewButton = new JButton("Crear usuario");
-		btnNewButton.setBounds(163, 210, 122, 23);
-		panelRegistro.add(btnNewButton);
+		passwordField.setBounds(174, 270, 86, 20);
+		panel.add(passwordField);
+	}
+
+	public JPanel getPanel() {
+		return panel;
 	}
 }

@@ -34,8 +34,7 @@ public class Bienvenida {
 				paneles.get(1).setVisible(true);
 				paneles.get(2).setVisible(false);
 				paneles.get(3).setVisible(false);
-				paneles.get(4).setVisible(false);
-				paneles.get(5).setVisible(false);
+
 			}
 		});
 		panel.setBounds(0, 0, 634, 430);
