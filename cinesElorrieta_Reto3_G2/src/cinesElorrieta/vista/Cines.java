@@ -9,8 +9,15 @@ import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.JTable;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
+
+import java.awt.Font;
+import java.awt.Color;
+import javax.swing.border.LineBorder;
 
 public class Cines extends JFrame {
 
@@ -25,7 +32,7 @@ public class Cines extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Cines frame = new Cines();
+					Cines frame = new Cines(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,9 +44,9 @@ public class Cines extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Cines() {
+	public Cines(ArrayList<JPanel> paneles) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 830, 470);
+		setBounds(100, 100, 650, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -47,47 +54,68 @@ public class Cines extends JFrame {
 		contentPane.setLayout(null);
 		
 		JPanel panelCines = new JPanel();
-		panelCines.setBounds(0, 0, 815, 430);
+		panelCines.setBackground(new Color(255, 255, 255));
+		panelCines.setBounds(0, 0, 634, 430);
 		contentPane.add(panelCines);
 		panelCines.setLayout(null);
 		
 		JComboBox comboBoxCines = new JComboBox();
-		comboBoxCines.setBounds(27, 77, 114, 22);
+		comboBoxCines.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		comboBoxCines.setBounds(42, 138, 198, 35);
 		panelCines.add(comboBoxCines);
 		
-		JLabel lblCarrito = new JLabel("Foto");
-		lblCarrito.setBounds(392, 11, 33, 22);
-		panelCines.add(lblCarrito);
-		
-		JLabel lblLogo = new JLabel("Foto");
-		lblLogo.setBounds(10, 227, 33, 22);
-		panelCines.add(lblLogo);
-		
-		JButton btnInicioSesion = new JButton("Iniciar sesion");
+		JButton btnInicioSesion = new JButton("Login");
+		btnInicioSesion.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnInicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
-		btnInicioSesion.setBounds(10, 11, 114, 23);
+		btnInicioSesion.setBounds(64, 349, 115, 27);
 		panelCines.add(btnInicioSesion);
 		
 		JButton btnFin = new JButton("Finalizar");
-		btnFin.setBounds(336, 227, 89, 23);
+		btnFin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				setVisible(false);
+				new Resumen().setVisible(true);
+			}
+		});
+		btnFin.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		btnFin.setBounds(482, 345, 97, 35);
 		panelCines.add(btnFin);
 		
 		tablePeliculas = new JTable();
-		tablePeliculas.setBounds(218, 77, 190, 115);
+		tablePeliculas.setBorder(new LineBorder(new Color(0, 0, 0), 2));
+		tablePeliculas.setBounds(316, 106, 255, 190);
 		panelCines.add(tablePeliculas);
 		
-		JButton btnVolver = new JButton("Volver ???");
+		JButton btnVolver = new JButton("Volver ");
+		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				System.out.println("Go to bienvenida ");
+				panelCines.setVisible(false);
 				
-				setVisible(false);
-				new Bienvenida().setVisible(true);
+				paneles.get(0).setVisible(true);
+				paneles.get(1).setVisible(false);
+				paneles.get(2).setVisible(false);
+			
 			}
 		});
-		btnVolver.setBounds(220, 227, 89, 23);
+		btnVolver.setBounds(283, 345, 89, 35);
 		panelCines.add(btnVolver);
+		
+		JLabel lblCarrito = new JLabel("New label");
+		lblCarrito.setBounds(559, 23, 46, 14);
+		panelCines.add(lblCarrito);
+		
+		
+
+		ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("h.png"));
+		JLabel imgLabel = new JLabel("", imageIcon, JLabel.CENTER);
+		imgLabel.setBounds(10, 11, 198, 81);
+		imgLabel.setIcon(imageIcon);
+		panelCines.add(imgLabel);
 	}
 }

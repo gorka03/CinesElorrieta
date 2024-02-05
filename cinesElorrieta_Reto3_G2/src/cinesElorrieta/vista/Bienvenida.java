@@ -7,12 +7,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
 import javax.swing.JLabel;
+import java.awt.Color;
 
 public class Bienvenida extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	private JPanel panel = null;
 
 	/**
 	 * Launch the application.
@@ -21,7 +24,7 @@ public class Bienvenida extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Bienvenida frame = new Bienvenida();
+					Bienvenida frame = new Bienvenida(null);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -33,9 +36,9 @@ public class Bienvenida extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Bienvenida() {
+	public Bienvenida(ArrayList<JPanel> paneles) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 830, 470);
+		setBounds(100, 100, 650, 470);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -43,6 +46,7 @@ public class Bienvenida extends JFrame {
 		contentPane.setLayout(null);
 
 		JPanel panelBienvenida = new JPanel();
+		panelBienvenida.setBackground(new Color(255, 255, 255));
 		panelBienvenida.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -54,28 +58,29 @@ public class Bienvenida extends JFrame {
 					ex.printStackTrace();
 				}
 
-				// Después de 3 segundos, oculta la ventana de bienvenida y muestra la ventana
-				// de cines
-				setVisible(false);
-				new Cines().setVisible(true);
+				System.out.println("Go to cines ");
+				panelBienvenida.setVisible(false);
+				
+				paneles.get(0).setVisible(false);
+				paneles.get(1).setVisible(true);
+				paneles.get(2).setVisible(false);
+				
 			}
 		});
-		panelBienvenida.setBounds(0, 0, 815, 430);
+		panelBienvenida.setBounds(0, 0, 634, 430);
 
 		contentPane.add(panelBienvenida);
 		panelBienvenida.setLayout(null);
 
-		/*JLabel lblBienvenida = new JLabel("");
-		lblBienvenida
-		.setIcon(new ImageIcon("C:\\Users\\in1dm3-v\\eclipse-workspace\\retos\\src\\reto2\\cine-logo2.png"));
-		lblBienvenida.setBounds(0, 5, 650, 386);
-		panelBienvenida.add(lblBienvenida);*/
-		
-		ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("bienvenida.png"));
-		//logo2.png
+		ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("yh.png"));
 		JLabel imgLabel = new JLabel("", imageIcon, JLabel.CENTER);
-		imgLabel.setBounds(0, 0, 815, 430);
+		imgLabel.setBackground(new Color(255, 255, 255));
+		imgLabel.setBounds(77, 49, 432, 307);
 		imgLabel.setIcon(imageIcon);
 		panelBienvenida.add(imgLabel);
+	}
+	
+	public JPanel getPanel (){
+		return panel ;
 	}
 }
