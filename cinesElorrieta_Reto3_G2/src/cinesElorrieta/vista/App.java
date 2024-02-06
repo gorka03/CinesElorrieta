@@ -76,7 +76,25 @@ public class App {
 
 		// Lo metemos en la lista y en la ventana
 		panelesCine.add(panel4);
-		frame.getContentPane().add(panel4);		
+		frame.getContentPane().add(panel4);
+
+		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
+		Resumen resumen = new Resumen(panelesCine);
+		JPanel panel5 = resumen.getPanel();
+		panel5.setVisible(false);
+
+		// Lo metemos en la lista y en la ventana
+		panelesCine.add(panel5);
+		frame.getContentPane().add(panel5);
+
+		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
+		Sesion sesion = new Sesion(panelesCine);
+		JPanel panel6 = sesion.getPanel();
+		panel6.setVisible(false);
+
+		// Lo metemos en la lista y en la ventana
+		panelesCine.add(panel6);
+		frame.getContentPane().add(panel6);
 
 	}
 }

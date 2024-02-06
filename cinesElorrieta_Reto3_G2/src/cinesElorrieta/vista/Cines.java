@@ -54,6 +54,8 @@ public class Cines {
 				paneles.get(1).setVisible(false);
 				paneles.get(2).setVisible(false);
 				paneles.get(3).setVisible(false);
+				paneles.get(4).setVisible(false);
+				paneles.get(5).setVisible(true);
 
 			}
 		});
@@ -87,7 +89,7 @@ public class Cines {
 		lblCarrito.setBounds(559, 23, 46, 14);
 		panel.add(lblCarrito);
 
-		ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("h.png"));
+		ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("logo.png"));
 		JLabel imgLabel = new JLabel("", imageIcon, JLabel.CENTER);
 		imgLabel.setBounds(10, 11, 198, 81);
 		imgLabel.setIcon(imageIcon);

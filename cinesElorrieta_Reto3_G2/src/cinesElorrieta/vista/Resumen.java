@@ -16,13 +16,18 @@ public class Resumen {
 		panel = new JPanel();
 		panel.setBounds(0, 0, 650, 470);
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setLayout(null);
 		
 		table = new JTable();
 		table.setBorder(new LineBorder(new Color(0, 0, 0), 3));
-		table.setBounds(128, 67, 322, 320);
+		table.setBounds(219, 50, 242, 263);
 		panel.add(table);
 		
+	}
+
+
+	public JPanel getPanel() {
+		// TODO Auto-generated method stub
+		return panel;
 	}
 }
 
