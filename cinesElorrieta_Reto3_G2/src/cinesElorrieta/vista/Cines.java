@@ -30,7 +30,7 @@ public class Cines {
 
 		JComboBox comboBoxCines = new JComboBox();
 		comboBoxCines.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		comboBoxCines.setBounds(40, 167, 142, 27);
+		comboBoxCines.setBounds(66, 166, 142, 27);
 		panel.add(comboBoxCines);
 
 		JButton btnInicioSesion = new JButton("Login");
@@ -44,7 +44,7 @@ public class Cines {
 
 			}
 		});
-		btnInicioSesion.setBounds(64, 374, 121, 27);
+		btnInicioSesion.setBounds(87, 374, 121, 27);
 		panel.add(btnInicioSesion);
 
 		JButton btnFin = new JButton("Finalizar");
@@ -58,12 +58,12 @@ public class Cines {
 			}
 		});
 		btnFin.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnFin.setBounds(487, 374, 106, 27);
+		btnFin.setBounds(465, 374, 106, 27);
 		panel.add(btnFin);
 
 		tablePeliculas = new JTable();
 		tablePeliculas.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		tablePeliculas.setBounds(316, 106, 255, 190);
+		tablePeliculas.setBounds(284, 106, 287, 213);
 		panel.add(tablePeliculas);
 
 		JButton btnVolver = new JButton("Volver ");
@@ -80,7 +80,7 @@ public class Cines {
 
 			}
 		});
-		btnVolver.setBounds(267, 378, 106, 27);
+		btnVolver.setBounds(284, 374, 106, 27);
 		panel.add(btnVolver);
 
 		JLabel lblCarrito = new JLabel("New label");

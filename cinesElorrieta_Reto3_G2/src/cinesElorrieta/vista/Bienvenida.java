@@ -44,7 +44,7 @@ public class Bienvenida {
 		ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("yh.png"));
 		JLabel imgLabel = new JLabel("", imageIcon, JLabel.CENTER);
 		imgLabel.setBackground(new Color(255, 255, 255));
-		imgLabel.setBounds(77, 49, 432, 307);
+		imgLabel.setBounds(0, 0, 634, 430);
 		imgLabel.setIcon(imageIcon);
 		panel.add(imgLabel);
 
