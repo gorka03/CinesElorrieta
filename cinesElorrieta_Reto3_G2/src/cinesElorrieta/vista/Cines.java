@@ -15,6 +15,8 @@ import javax.swing.ImageIcon;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.border.LineBorder;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Cines {
 
@@ -37,31 +39,12 @@ public class Cines {
 		btnInicioSesion.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnInicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				paneles.get(0).setVisible(false);
 				paneles.get(1).setVisible(false);
 				paneles.get(2).setVisible(true);
-				paneles.get(3).setVisible(false);
-
 			}
 		});
-		btnInicioSesion.setBounds(87, 374, 121, 27);
+		btnInicioSesion.setBounds(285, 374, 121, 27);
 		panel.add(btnInicioSesion);
-
-		JButton btnFin = new JButton("Finalizar");
-		btnFin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				paneles.get(0).setVisible(false);
-				paneles.get(1).setVisible(false);
-				paneles.get(2).setVisible(false);
-				paneles.get(3).setVisible(false);
-				paneles.get(4).setVisible(false);
-				paneles.get(5).setVisible(true);
-
-			}
-		});
-		btnFin.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnFin.setBounds(465, 374, 106, 27);
-		panel.add(btnFin);
 
 		tablePeliculas = new JTable();
 		tablePeliculas.setBorder(new LineBorder(new Color(0, 0, 0), 2));
@@ -72,28 +55,31 @@ public class Cines {
 		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Go to bienvenida ");
-				panel.setVisible(false);
-
 				paneles.get(0).setVisible(true);
 				paneles.get(1).setVisible(false);
-				paneles.get(2).setVisible(false);
-				paneles.get(3).setVisible(false);
-
 			}
 		});
-		btnVolver.setBounds(284, 374, 106, 27);
+		btnVolver.setBounds(465, 374, 106, 27);
 		panel.add(btnVolver);
 
-		JLabel lblCarrito = new JLabel("New label");
-		lblCarrito.setBounds(559, 23, 46, 14);
-		panel.add(lblCarrito);
+		ImageIcon imageLogo = new ImageIcon(this.getClass().getResource("logo.png"));
+		JLabel imgLogo = new JLabel("", imageLogo, JLabel.CENTER);
+		imgLogo.setBounds(10, 11, 198, 81);
+		imgLogo.setIcon(imageLogo);
+		panel.add(imgLogo);
 
-		ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("logo.png"));
-		JLabel imgLabel = new JLabel("", imageIcon, JLabel.CENTER);
-		imgLabel.setBounds(10, 11, 198, 81);
-		imgLabel.setIcon(imageIcon);
-		panel.add(imgLabel);
+		ImageIcon imageCarrito = new ImageIcon(this.getClass().getResource("carrito.png"));
+		JLabel imgCarrito = new JLabel("", imageCarrito, JLabel.CENTER);
+		imgCarrito.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				paneles.get(1).setVisible(false);
+				paneles.get(4).setVisible(true);
+			}
+		});
+		imgCarrito.setBounds(544, 0, 106, 93);
+		imgCarrito.setIcon(imageCarrito);
+		panel.add(imgCarrito);
 
 	}
 

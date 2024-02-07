@@ -37,14 +37,12 @@ public class Bienvenida {
 
 			}
 		});
-		panel.setBounds(0, 0, 634, 430);
-
-		panel.setLayout(null);
 
 		ImageIcon imageIcon = new ImageIcon(this.getClass().getResource("logoBienvenida.png"));
+		panel.setLayout(null);
 		JLabel imgLabel = new JLabel("", imageIcon, JLabel.CENTER);
 		imgLabel.setBackground(new Color(255, 255, 255));
-		imgLabel.setBounds(0, 0, 634, 430);
+		imgLabel.setBounds(0, 0, 650, 470);
 		imgLabel.setIcon(imageIcon);
 		panel.add(imgLabel);
 
