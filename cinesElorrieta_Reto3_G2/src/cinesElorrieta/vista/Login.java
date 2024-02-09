@@ -69,6 +69,9 @@ public class Login {
 				} else {
 					JOptionPane.showMessageDialog(panel, "Usuario o contraseña incorrecta", "Error de inicio de sesión",
 							JOptionPane.ERROR_MESSAGE);
+					// Limpiar los campos de texto
+					textField.setText("");
+					passwordField.setText("");
 				}
 			}
 
