@@ -44,16 +44,25 @@ public class App {
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
 		Bienvenida bienvenida = new Bienvenida(panelesCine);
-		JPanel panel1 = bienvenida.getPanel();
-		panel1.setVisible(true);
+		JPanel panel0 = bienvenida.getPanel();
+		panel0.setVisible(true);
+
+		// Lo metemos en la lista y en la ventana
+		panelesCine.add(panel0);
+		frame.getContentPane().add(panel0);
+
+		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
+		Cines cines = new Cines(panelesCine);
+		JPanel panel1 = cines.getPanel();
+		panel1.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
 		panelesCine.add(panel1);
 		frame.getContentPane().add(panel1);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
-		Cines cines = new Cines(panelesCine);
-		JPanel panel2 = cines.getPanel();
+		Sesion sesion = new Sesion(panelesCine);
+		JPanel panel2 = sesion.getPanel();
 		panel2.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
@@ -61,8 +70,8 @@ public class App {
 		frame.getContentPane().add(panel2);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
-		Login login = new Login(panelesCine);
-		JPanel panel3 = login.getPanel();
+		Resumen resumen = new Resumen(panelesCine);
+		JPanel panel3 = resumen.getPanel();
 		panel3.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
@@ -70,8 +79,8 @@ public class App {
 		frame.getContentPane().add(panel3);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
-		Registro registro = new Registro(panelesCine);
-		JPanel panel4 = registro.getPanel();
+		Login login = new Login(panelesCine);
+		JPanel panel4 = login.getPanel();
 		panel4.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
@@ -79,8 +88,8 @@ public class App {
 		frame.getContentPane().add(panel4);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
-		Resumen resumen = new Resumen(panelesCine);
-		JPanel panel5 = resumen.getPanel();
+		Registro registro = new Registro(panelesCine);
+		JPanel panel5 = registro.getPanel();
 		panel5.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
@@ -88,22 +97,13 @@ public class App {
 		frame.getContentPane().add(panel5);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
-		Sesion sesion = new Sesion(panelesCine);
-		JPanel panel6 = sesion.getPanel();
+		GeneradorTicket generadorTicket = new GeneradorTicket(panelesCine);
+		JPanel panel6 = generadorTicket.getPanel();
 		panel6.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
 		panelesCine.add(panel6);
 		frame.getContentPane().add(panel6);
-		
-		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
-		GeneradorTicket generadorTicket = new GeneradorTicket(panelesCine);
-		JPanel panel7 = generadorTicket.getPanel();
-		panel7.setVisible(false);
-
-		// Lo metemos en la lista y en la ventana
-		panelesCine.add(panel7);
-		frame.getContentPane().add(panel7);
 
 	}
 }

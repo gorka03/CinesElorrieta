@@ -22,7 +22,7 @@ import cinesElorrieta.utils.DBUtils;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import java.awt.event.MouseListener;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -59,13 +59,20 @@ public class Cines {
 		btnInicioSesion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				paneles.get(1).setVisible(false);
-				paneles.get(2).setVisible(true);
+				paneles.get(4).setVisible(true);
 			}
 		});
 		btnInicioSesion.setBounds(285, 374, 121, 27);
 		panel.add(btnInicioSesion);
 
 		tablePeliculas = new JTable();
+		tablePeliculas.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				paneles.get(1).setVisible(false);
+				paneles.get(2).setVisible(true);
+			}
+		});
 		tablePeliculas.setBorder(new LineBorder(new Color(0, 0, 0), 2));
 		tablePeliculas.setBounds(284, 106, 287, 213);
 		panel.add(tablePeliculas);
@@ -100,7 +107,7 @@ public class Cines {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				paneles.get(1).setVisible(false);
-				paneles.get(4).setVisible(true);
+				paneles.get(3).setVisible(true);
 			}
 		});
 		imgCarrito.setBounds(544, 0, 106, 93);
