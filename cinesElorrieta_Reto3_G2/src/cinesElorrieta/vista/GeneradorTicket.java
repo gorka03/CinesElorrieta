@@ -34,7 +34,7 @@ public class GeneradorTicket {
 		table.setBounds(120, 116, 446, 258);
 		panel.add(table);
 
-		JButton btnConfirmar = new JButton("Confirmar");
+		JButton btnConfirmar = new JButton("Imprimir ticket");
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -42,19 +42,9 @@ public class GeneradorTicket {
 				paneles.get(0).setVisible(true);
 			}
 		});
-		btnConfirmar.setBounds(443, 398, 123, 23);
+		btnConfirmar.setBounds(269, 403, 152, 23);
 		panel.add(btnConfirmar);
 
-		JButton btnCancelar = new JButton("Cancelar");
-		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnCancelar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				paneles.get(1).setVisible(true);
-				paneles.get(4).setVisible(false);
-			}
-		});
-		btnCancelar.setBounds(120, 398, 117, 23);
-		panel.add(btnCancelar);
 
 		JLabel lblAgradecimiento = new JLabel("\"Gracias por su compra\"");
 		lblAgradecimiento.setFont(new Font("Tahoma", Font.PLAIN, 18));
