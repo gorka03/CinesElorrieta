@@ -95,6 +95,15 @@ public class App {
 		// Lo metemos en la lista y en la ventana
 		panelesCine.add(panel6);
 		frame.getContentPane().add(panel6);
+		
+		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
+		GeneradorTicket generadorTicket = new GeneradorTicket(panelesCine);
+		JPanel panel7 = generadorTicket.getPanel();
+		panel7.setVisible(false);
+
+		// Lo metemos en la lista y en la ventana
+		panelesCine.add(panel7);
+		frame.getContentPane().add(panel7);
 
 	}
 }

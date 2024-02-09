@@ -63,11 +63,9 @@ public class Login {
 				if (credencialesValidas) {
 					JOptionPane.showMessageDialog(panel, "Has inciado sesión correctamente ",
 							"Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
-
-					paneles.get(0).setVisible(false);
-					paneles.get(1).setVisible(true);
 					paneles.get(2).setVisible(false);
-					paneles.get(3).setVisible(false);
+					paneles.get(6).setVisible(true);
+
 				} else {
 					JOptionPane.showMessageDialog(panel, "Usuario o contraseña incorrecta", "Error de inicio de sesión",
 							JOptionPane.ERROR_MESSAGE);
