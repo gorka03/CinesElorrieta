@@ -1,9 +1,10 @@
 package cinesElorrieta.vista;
 
 import java.awt.Color;
-
+import java.awt.Font;
 import java.util.ArrayList;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 
 import javax.swing.JLabel;
@@ -12,9 +13,6 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
-
-import cinesElorrieta.gestores.GestorDeSesiones;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -38,22 +36,23 @@ public class Sesion {
 
 			}
 		});
-		btnVolver.setBounds(96, 381, 63, 23);
+		btnVolver.setBounds(123, 379, 143, 23);
+		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(btnVolver);
+		
+		ImageIcon imageLogo = new ImageIcon(this.getClass().getResource("logo.png"));
+		JLabel imgLogo = new JLabel("", imageLogo, JLabel.CENTER);
+		imgLogo.setBounds(10, 11, 198, 81);
+		imgLogo.setIcon(imageLogo);
+		panel.add(imgLogo);
 
 		JButton btnConfirmar = new JButton("Confirmar");
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int opcion = JOptionPane.showConfirmDialog(null, "Mensaje", "Titulo del Diálogo", JOptionPane.YES_NO_OPTION);
+				int opcion = JOptionPane.showConfirmDialog(panel, "Mensaje", "Titulo del Diálogo", JOptionPane.YES_NO_OPTION);
 				if (opcion == JOptionPane.YES_OPTION) {
 					
-					String loSeleccionado;
-					String lodelaotrapantall = null;
-					
-				//	GestorDeSesiones gestorDeSesiones = new GestorDeSesiones();
-					//gestorDeSesiones.insert (loSeleccionado, lodelaotrapantall);
-					
-					JOptionPane.showMessageDialog(null, "Guardado correctamente ");
+					JOptionPane.showMessageDialog(panel, "Guardado correctamente ");
 					paneles.get(2).setVisible(false);
 					paneles.get(1).setVisible(true);
 				}else {
@@ -62,19 +61,17 @@ public class Sesion {
 
 			}
 		});
-		btnConfirmar.setBounds(467, 381, 79, 23);
+		btnConfirmar.setBounds(411, 381, 152, 23);
+		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		panel.add(btnConfirmar);
 
-		JLabel lblLogo = new JLabel("Logo");
-		lblLogo.setBounds(21, 16, 23, 14);
-		panel.add(lblLogo);
 
 		tableSesion = new JTable();
 		tableSesion.setModel(new DefaultTableModel(
 				new Object[][] { { null, null }, { null, null }, { null, null }, { null, null }, },
 				new String[] { "Sesion", "Hora" }));
 		tableSesion.setBorder(new LineBorder(new Color(0, 0, 0), 4));
-		tableSesion.setBounds(96, 85, 450, 266);
+		tableSesion.setBounds(113, 104, 450, 266);
 		panel.add(tableSesion);
 
 	}
