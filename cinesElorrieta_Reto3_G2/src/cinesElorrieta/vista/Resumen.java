@@ -12,6 +12,7 @@ import javax.swing.border.LineBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
 public class Resumen {
 
@@ -33,8 +34,17 @@ public class Resumen {
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				paneles.get(2).setVisible(true);
-				paneles.get(4).setVisible(false);
+				int opcion = JOptionPane.showConfirmDialog(panel, "Mensaje", "Titulo del Diálogo",
+						JOptionPane.YES_NO_OPTION);
+				if (opcion == JOptionPane.YES_OPTION) {
+
+					JOptionPane.showMessageDialog(panel, "Guardado correctamente ");
+					paneles.get(3).setVisible(false);
+					paneles.get(4).setVisible(true);
+				} else {
+					System.out.println("");
+				}
+
 			}
 		});
 		btnConfirmar.setBounds(443, 398, 123, 23);
@@ -45,7 +55,7 @@ public class Resumen {
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				paneles.get(1).setVisible(true);
-				paneles.get(4).setVisible(false);
+				paneles.get(3).setVisible(false);
 			}
 		});
 		btnCancelar.setBounds(120, 398, 117, 23);

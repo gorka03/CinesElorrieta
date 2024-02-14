@@ -4,6 +4,7 @@ import javax.swing.JPanel;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -14,7 +15,6 @@ import javax.swing.ImageIcon;
 
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
 import cinesElorrieta.controller.GestorCines;
@@ -23,7 +23,7 @@ import cinesElorrieta.modelo.Cine;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-
+import javax.swing.JScrollPane;
 
 public class Cines {
 
@@ -41,8 +41,8 @@ public class Cines {
 		comboBoxCines.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		comboBoxCines.setBounds(21, 166, 235, 27);
 		panel.add(comboBoxCines);
-		
-        comboBoxCines.addItem("Seleccionar cine...");
+
+		comboBoxCines.addItem("Seleccionar cine...");
 
 		ArrayList<Cine> cines = GestorCines.obtenerDatosCines();
 
@@ -52,36 +52,45 @@ public class Cines {
 			}
 		}
 
-		JButton btnInicioSesion = new JButton("Login");
-		btnInicioSesion.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		btnInicioSesion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				paneles.get(1).setVisible(false);
-				paneles.get(4).setVisible(true);
-			}
-		});
-		btnInicioSesion.setBounds(285, 374, 121, 27);
-		panel.add(btnInicioSesion);
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(284, 106, 287, 213);
+		panel.add(scrollPane);
 
 		tablePeliculas = new JTable();
-		
+
 		tablePeliculas.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				paneles.get(1).setVisible(false);
-				paneles.get(2).setVisible(true);
+				if (comboBoxCines.getSelectedIndex() != 0) {
+					paneles.get(1).setVisible(false);
+					paneles.get(2).setVisible(true);
+				}
 			}
 		});
-		
-		tablePeliculas.setBorder(new LineBorder(new Color(0, 0, 0), 2));
-		tablePeliculas.setBounds(284, 106, 287, 213);
-		tablePeliculas.setDefaultEditor(Object.class, null);
-		panel.add(tablePeliculas);
+
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (comboBoxCines.getSelectedIndex() == 0) { // Si "Seleccionar cine..." está seleccionado
+					JOptionPane.showMessageDialog(panel, "No hay cine seleccionado", "Error",
+							JOptionPane.INFORMATION_MESSAGE);
+					return; // No hace nada
+				} else {
+					JOptionPane.showMessageDialog(panel, "No hay pelicula seleccionada", "Error",
+							JOptionPane.INFORMATION_MESSAGE);
+					return; // No hace nada
+				}
+
+			}
+		});
+		scrollPane.setViewportView(tablePeliculas);
 
 		comboBoxCines.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+
 				String cineSeleccionado = (String) comboBoxCines.getSelectedItem();
 				cargarPeliculasCineEnTabla(cineSeleccionado);
+
 			}
 		});
 
@@ -120,17 +129,17 @@ public class Cines {
 	public JPanel getPanel() {
 		return panel;
 	}
-	 public static void cargarPeliculasCineEnTabla(String nombreCine) {
-	        String[] columnas = {"Título"};
-	        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
-	        
-	        ArrayList<String> nombresPeliculas = GestorPeliculas.obtenerPeliculasDelCine(nombreCine);
-	        
-	        for (String nombrePelicula : nombresPeliculas) {
-	            modeloTabla.addRow(new Object[] {nombrePelicula});
-	        }
-	        
-	        tablePeliculas.setModel(modeloTabla);
-	    }
 
+	public static void cargarPeliculasCineEnTabla(String nombreCine) {
+		String[] columnas = { "Título" };
+		DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
+
+		ArrayList<String> nombresPeliculas = GestorPeliculas.obtenerPeliculasDelCine(nombreCine);
+
+		for (String nombrePelicula : nombresPeliculas) {
+			modeloTabla.addRow(new Object[] { nombrePelicula });
+		}
+
+		tablePeliculas.setModel(modeloTabla);
+	}
 }

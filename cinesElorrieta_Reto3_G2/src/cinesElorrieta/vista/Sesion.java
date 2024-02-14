@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
@@ -73,11 +74,14 @@ public class Sesion {
 		tableSesion.setBorder(new LineBorder(new Color(0, 0, 0), 4));
 		tableSesion.setBounds(113, 104, 450, 266);
 		panel.add(tableSesion);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(113, 104, 450, 266);
+		panel.add(scrollPane);
 
 	}
 
 	public JPanel getPanel() {
-		// TODO Auto-generated method stub
 		return panel;
 	}
 }
