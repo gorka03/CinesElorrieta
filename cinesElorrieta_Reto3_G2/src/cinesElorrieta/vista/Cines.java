@@ -28,6 +28,7 @@ import javax.swing.JScrollPane;
 public class Cines {
 
 	private static JTable tablePeliculas;
+
 	private JPanel panel = null;
 
 	public Cines(ArrayList<JPanel> paneles) {
@@ -64,6 +65,7 @@ public class Cines {
 				if (comboBoxCines.getSelectedIndex() != 0) {
 					paneles.get(1).setVisible(false);
 					paneles.get(2).setVisible(true);
+					Sesion.pasarPosicionComboBox(comboBoxCines);
 				}
 			}
 		});
@@ -87,10 +89,8 @@ public class Cines {
 
 		comboBoxCines.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				String cineSeleccionado = (String) comboBoxCines.getSelectedItem();
 				cargarPeliculasCineEnTabla(cineSeleccionado);
-
 			}
 		});
 
@@ -100,6 +100,7 @@ public class Cines {
 			public void actionPerformed(ActionEvent e) {
 				paneles.get(0).setVisible(true);
 				paneles.get(1).setVisible(false);
+				comboBoxCines.setSelectedIndex(0); //?????
 			}
 		});
 		btnVolver.setBounds(465, 374, 106, 27);

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -17,10 +17,11 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
+
 public class Sesion {
 	private JPanel panel = null;
 	private JTable tableSesion;
-
+	static int posicion = 0;
 	public Sesion(ArrayList<JPanel> paneles) {
 		panel = new JPanel();
 		panel.setBounds(0, 0, 650, 470);
@@ -31,10 +32,8 @@ public class Sesion {
 		JButton btnVolver = new JButton("Volver");
 		btnVolver.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
 				paneles.get(1).setVisible(true);
 				paneles.get(2).setVisible(false);
-
 			}
 		});
 		btnVolver.setBounds(123, 379, 143, 23);
@@ -54,10 +53,17 @@ public class Sesion {
 				if (opcion == JOptionPane.YES_OPTION) {
 					
 					JOptionPane.showMessageDialog(panel, "Guardado correctamente ");
+					
 					paneles.get(2).setVisible(false);
 					paneles.get(1).setVisible(true);
+					pasarPosicionComboBox(null); //??
+					//Guradar los datos 
+
+				
+					
 				}else {
 					System.out.println("");
+					
 				}
 
 			}
@@ -83,5 +89,11 @@ public class Sesion {
 
 	public JPanel getPanel() {
 		return panel;
+	}
+	
+	public static void pasarPosicionComboBox(JComboBox<String> comboBoxCines) {
+		
+		comboBoxCines.setSelectedIndex(0);
+
 	}
 }
