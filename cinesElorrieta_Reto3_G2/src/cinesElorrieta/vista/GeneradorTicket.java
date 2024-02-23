@@ -17,7 +17,7 @@ public class GeneradorTicket {
 	private JPanel panel = null;
 	private JTable table;
 
-	public GeneradorTicket(ArrayList<JPanel> paneles) {
+	public GeneradorTicket(ArrayList<Object> paneles) {
 		panel = new JPanel();
 		panel.setBounds(0, 0, 650, 470);
 		panel.setBackground(new Color(255, 255, 255));
@@ -38,8 +38,13 @@ public class GeneradorTicket {
 		btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnConfirmar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				paneles.get(6).setVisible(false);
-				paneles.get(0).setVisible(true);
+				((Bienvenida) paneles.get(0)).getPanel().setVisible(true);
+				((Cines) paneles.get(1)).getPanel().setVisible(false);
+				((Sesion) paneles.get(2)).getPanel().setVisible(false);
+				((Resumen) paneles.get(3)).getPanel().setVisible(false);
+				((Login) paneles.get(4)).getPanel().setVisible(false);
+				((Registro) paneles.get(5)).getPanel().setVisible(false);
+				((GeneradorTicket) paneles.get(6)).getPanel().setVisible(false);
 			}
 		});
 		btnConfirmar.setBounds(269, 403, 152, 23);

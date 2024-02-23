@@ -21,7 +21,7 @@ public class Login {
 	private JPasswordField passwordField = null;
 	private JPanel panel = null;
 
-	public Login(ArrayList<JPanel> paneles) {
+	public Login(ArrayList<Object> paneles) {
 
 		panel = new JPanel();
 		panel.setBounds(0, 0, 650, 470);
@@ -52,14 +52,20 @@ public class Login {
 				String usuario = textField.getText();
 				String contrasenna = new String(passwordField.getPassword());
 
+				GestorLogin gestorLogin = new GestorLogin();
 				// Verificar las credenciales en la base de datos
-				boolean credencialesValidas = GestorLogin.verificarCredenciales(usuario, contrasenna);
+				boolean credencialesValidas = gestorLogin.verificarCredenciales(usuario, contrasenna);
 
 				if (credencialesValidas) {
 					JOptionPane.showMessageDialog(panel, "Has inciado sesión correctamente ",
 							"Inicio de sesión correcto", JOptionPane.INFORMATION_MESSAGE);
-					paneles.get(4).setVisible(false);
-					paneles.get(6).setVisible(true);
+					((Bienvenida) paneles.get(0)).getPanel().setVisible(false);
+					((Cines) paneles.get(1)).getPanel().setVisible(false);
+					((Sesion) paneles.get(2)).getPanel().setVisible(false);
+					((Resumen) paneles.get(3)).getPanel().setVisible(false);
+					((Login) paneles.get(4)).getPanel().setVisible(false);
+					((Registro) paneles.get(5)).getPanel().setVisible(false);
+					((GeneradorTicket) paneles.get(6)).getPanel().setVisible(true);
 
 				} else {
 					JOptionPane.showMessageDialog(panel, "Usuario o contraseña incorrecta", "Error de inicio de sesión",
@@ -79,8 +85,13 @@ public class Login {
 		btnRegistro.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		btnRegistro.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				paneles.get(4).setVisible(false);
-				paneles.get(5).setVisible(true);
+				((Bienvenida) paneles.get(0)).getPanel().setVisible(false);
+				((Cines) paneles.get(1)).getPanel().setVisible(false);
+				((Sesion) paneles.get(2)).getPanel().setVisible(false);
+				((Resumen) paneles.get(3)).getPanel().setVisible(false);
+				((Login) paneles.get(4)).getPanel().setVisible(false);
+				((Registro) paneles.get(5)).getPanel().setVisible(true);
+				((GeneradorTicket) paneles.get(6)).getPanel().setVisible(false);
 
 			}
 		});
@@ -101,8 +112,14 @@ public class Login {
 		btnCancelar.setFont(new Font("Times New Roman", Font.BOLD, 12));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				paneles.get(1).setVisible(true);
-				paneles.get(4).setVisible(false);
+				((Bienvenida) paneles.get(0)).getPanel().setVisible(false);
+				((Cines) paneles.get(1)).getPanel().setVisible(true);
+				((Sesion) paneles.get(2)).getPanel().setVisible(false);
+				((Resumen) paneles.get(3)).getPanel().setVisible(false);
+				((Login) paneles.get(4)).getPanel().setVisible(false);
+				((Registro) paneles.get(5)).getPanel().setVisible(false);
+				((GeneradorTicket) paneles.get(6)).getPanel().setVisible(false);
+
 			}
 		});
 		panel.add(btnCancelar);

@@ -9,7 +9,7 @@ import cinesElorrieta.utils.DBUtils;
 
 public class GestorRegistro {
 
-	public static boolean guardarUsuarioEnBaseDeDatos(String dni, String nombre, String apellido, String genero,
+	public boolean guardarUsuarioEnBaseDeDatos(String dni, String nombre, String apellido, String genero,
 			String usuario, String contrasenna) {
 
 		boolean insercionExitosa = false;

@@ -11,7 +11,7 @@ import cinesElorrieta.utils.DBUtils;
 
 public class GestorCines {
 
-	public static ArrayList<Cine> obtenerDatosCines() {
+	public  ArrayList<Cine> obtenerDatosCines() {
 		ArrayList<Cine> ret = null;
 
 		// SQL que queremos lanzar

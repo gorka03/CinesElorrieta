@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 public class App {
 
 	private JFrame frame;
-	private ArrayList<JPanel> panelesCine = null;
+	private ArrayList <Object> panelesCine = null;
 
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
@@ -39,26 +39,19 @@ public class App {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 
-		// Lista que contiene los paneles
-		panelesCine = new ArrayList<JPanel>();
+		panelesCine = new ArrayList<Object>();
 
-		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
 		Bienvenida bienvenida = new Bienvenida(panelesCine);
-		JPanel panel0 = bienvenida.getPanel();
-		panel0.setVisible(true);
+		JPanel panelBienvenida = bienvenida.getPanel();
+		panelBienvenida.setVisible(true);
+		panelesCine.add(bienvenida);
+		frame.getContentPane().add(panelBienvenida);
 
-		// Lo metemos en la lista y en la ventana
-		panelesCine.add(panel0);
-		frame.getContentPane().add(panel0);
-
-		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
 		Cines cines = new Cines(panelesCine);
-		JPanel panel1 = cines.getPanel();
-		panel1.setVisible(false);
-
-		// Lo metemos en la lista y en la ventana
-		panelesCine.add(panel1);
-		frame.getContentPane().add(panel1);
+		JPanel panelCine = cines.getPanel();
+		panelCine.setVisible(false);
+		panelesCine.add(cines);
+		frame.getContentPane().add(panelCine);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
 		Sesion sesion = new Sesion(panelesCine);
@@ -66,7 +59,7 @@ public class App {
 		panel2.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
-		panelesCine.add(panel2);
+		panelesCine.add(sesion);
 		frame.getContentPane().add(panel2);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
@@ -75,7 +68,7 @@ public class App {
 		panel3.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
-		panelesCine.add(panel3);
+		panelesCine.add(resumen);
 		frame.getContentPane().add(panel3);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
@@ -84,7 +77,7 @@ public class App {
 		panel4.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
-		panelesCine.add(panel4);
+		panelesCine.add(login);
 		frame.getContentPane().add(panel4);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
@@ -93,7 +86,7 @@ public class App {
 		panel5.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
-		panelesCine.add(panel5);
+		panelesCine.add(registro);
 		frame.getContentPane().add(panel5);
 
 		// Creamos los gestores y los paneles. Pasamos la lista por el constructor
@@ -102,8 +95,7 @@ public class App {
 		panel6.setVisible(false);
 
 		// Lo metemos en la lista y en la ventana
-		panelesCine.add(panel6);
+		panelesCine.add(generadorTicket);
 		frame.getContentPane().add(panel6);
-
 	}
 }

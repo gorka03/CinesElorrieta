@@ -6,98 +6,196 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import javax.swing.border.LineBorder;
 import javax.swing.table.DefaultTableModel;
 
-import cinesElorrieta.controller.GestorPeliculas;
+import cinesElorrieta.controller.GestorSesion;
+import cinesElorrieta.modelo.ResumenPojo;
+import cinesElorrieta.modelo.SesionTmp;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import javax.swing.JScrollPane;
 
 public class Sesion {
-    private JPanel panel = null;
-    private static JTable tableSesion;
 
-    public Sesion(ArrayList<JPanel> paneles) {
-        panel = new JPanel();
-        panel.setBounds(0, 0, 650, 470);
+	private JTable tableSesion;
+	private JPanel panel = null;
 
-        panel.setBackground(new Color(255, 255, 255));
-        panel.setLayout(null);
+	private String cineSeleccionado = null;
+	private String nombrePelicula = null;
+	private String datosSesion = "";
+	private int lineaSesion;
+	private String duracion = null;
+	private String fecha = null;
+	private String horario = null;
+	private String sala = null;
+	private String precio = null;
 
-        JButton btnVolver = new JButton("Volver");
-        btnVolver.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+	ArrayList<ResumenPojo> listaResumen = new ArrayList<ResumenPojo>();
 
-                paneles.get(1).setVisible(true);
-                paneles.get(2).setVisible(false);
+	public Sesion(ArrayList<Object> paneles) {
+		panel = new JPanel();
+		panel.setBounds(0, 0, 650, 470);
 
-            }
-        });
-        btnVolver.setBounds(123, 379, 143, 23);
-        btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        panel.add(btnVolver);
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setLayout(null);
 
-        ImageIcon imageLogo = new ImageIcon(this.getClass().getResource("logo.png"));
-        JLabel imgLogo = new JLabel("", imageLogo, JLabel.CENTER);
-        imgLogo.setBounds(10, 11, 198, 81);
-        imgLogo.setIcon(imageLogo);
-        panel.add(imgLogo);
+		JButton btnVolver = new JButton("Volver");
+		btnVolver.setBackground(Color.WHITE);
+		btnVolver.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				((Bienvenida) paneles.get(0)).getPanel().setVisible(false);
+				((Cines) paneles.get(1)).getPanel().setVisible(true);
+				((Sesion) paneles.get(2)).getPanel().setVisible(false);
+				((Resumen) paneles.get(3)).getPanel().setVisible(false);
+				((Login) paneles.get(4)).getPanel().setVisible(false);
+				((Registro) paneles.get(5)).getPanel().setVisible(false);
+				((GeneradorTicket) paneles.get(6)).getPanel().setVisible(false);
+			}
+		});
+		btnVolver.setBounds(25, 373, 143, 23);
+		btnVolver.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		panel.add(btnVolver);
 
-        JButton btnConfirmar = new JButton("Confirmar");
-        btnConfirmar.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                int opcion = JOptionPane.showConfirmDialog(panel, "Mensaje", "Titulo del Diálogo",
-                        JOptionPane.YES_NO_OPTION);
-                if (opcion == JOptionPane.YES_OPTION) {
+		ImageIcon imageLogo = new ImageIcon(this.getClass().getResource("logo.png"));
+		JLabel imgLogo = new JLabel("", imageLogo, JLabel.CENTER);
+		imgLogo.setBounds(10, 11, 198, 81);
+		imgLogo.setIcon(imageLogo);
+		panel.add(imgLogo);
 
-                    JOptionPane.showMessageDialog(panel, "Guardado correctamente ");
-                    paneles.get(2).setVisible(false);
-                    paneles.get(1).setVisible(true);
-                    pasarPosicionComboBox(null);
-                } else {
-                    System.out.println("");
-                }
+		tableSesion = new JTable();
+		tableSesion.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
 
-            }
-        });
-        btnConfirmar.setBounds(411, 381, 152, 23);
-        btnConfirmar.setFont(new Font("Tahoma", Font.PLAIN, 15));
-        panel.add(btnConfirmar);
+				int opcion = JOptionPane.showConfirmDialog(panel, "Confirmacion", "¿Desea confirmar la sesion?",
+						JOptionPane.YES_NO_OPTION);
+				if (opcion == JOptionPane.YES_OPTION) {
 
-        tableSesion = new JTable();
-        tableSesion.setModel(new DefaultTableModel(
-                new Object[][] { { null, null }, { null, null }, { null, null }, { null, null }, },
-                new String[] { "Sesion", "Hora" }));
-        tableSesion.setBorder(new LineBorder(new Color(0, 0, 0), 4));
-        tableSesion.setBounds(113, 104, 450, 266);
-        panel.add(tableSesion);
+					JOptionPane.showMessageDialog(panel, "Datos guardado correctamente ");
+					((Bienvenida) paneles.get(0)).getPanel().setVisible(false);
+					((Cines) paneles.get(1)).getPanel().setVisible(true);
+					((Sesion) paneles.get(2)).getPanel().setVisible(false);
+					((Resumen) paneles.get(3)).getPanel().setVisible(false);
+					((Login) paneles.get(4)).getPanel().setVisible(false);
+					((Registro) paneles.get(5)).getPanel().setVisible(false);
+					((GeneradorTicket) paneles.get(6)).getPanel().setVisible(false);
 
-    }
+					DefaultTableModel modelSesion = (DefaultTableModel) tableSesion.getModel();
+					lineaSesion = tableSesion.getSelectedRow();
 
-    public JPanel getPanel() {
-        return panel;
-    }
+					if (lineaSesion != -1) {
+						int numColumnas = modelSesion.getColumnCount();
 
-    public static void pasarPosicionComboBox(JComboBox<String> comboBoxCines) {
-        comboBoxCines.setSelectedItem(null);
-    }
+						for (int i = 0; i < numColumnas; i++) {
+							Object valorColumna = modelSesion.getValueAt(lineaSesion, i);
+							datosSesion += valorColumna.toString();
+							if (i < numColumnas - 1) {
+								datosSesion += ", ";
+							}
+						}
 
-    public static void cargardatosPeliculasEnTabla(int idPelicula) {
-        String[] columnas = { "Título", "Nombre", "Titulo", "Genero", "Coste", "Fecha", "Hora", "Sala" };
-        DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
+						String[] datosSeparados = datosSesion.split(", "); 
 
-        ArrayList<String> datosPelicula = GestorPeliculas.obtenerDatosPelicula(idPelicula);
+						if (datosSeparados.length == numColumnas) { 
+							duracion = datosSeparados[0];
+							fecha = datosSeparados[1];
+							horario = datosSeparados[2];
+							sala = datosSeparados[3];
+							precio = datosSeparados[4];
+						}
+					}
 
-        if (datosPelicula.size() == columnas.length) {
-            modeloTabla.addRow(datosPelicula.toArray());
-        }
+					guardarDatosSesion(cineSeleccionado, nombrePelicula);
 
-        tableSesion.setModel(modeloTabla);
-    }
+				} else {
+
+					cineSeleccionado = null;
+					nombrePelicula = null;
+
+					JOptionPane.showMessageDialog(panel, "No se han guardado los datos correctamente ");
+
+					((Bienvenida) paneles.get(0)).getPanel().setVisible(false);
+					((Cines) paneles.get(1)).getPanel().setVisible(true);
+					((Sesion) paneles.get(2)).getPanel().setVisible(false);
+					((Resumen) paneles.get(3)).getPanel().setVisible(false);
+					((Login) paneles.get(4)).getPanel().setVisible(false);
+					((Registro) paneles.get(5)).getPanel().setVisible(false);
+					((GeneradorTicket) paneles.get(6)).getPanel().setVisible(false);
+				}
+
+			}
+
+		});
+		tableSesion.setBounds(113, 104, 450, 266);
+
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(238, 131, 355, 234);
+		scrollPane.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				if (tableSesion.getSelectedRows() != null) { //
+					JOptionPane.showMessageDialog(panel, "No hay sesion seleccionado", "Error",
+							JOptionPane.INFORMATION_MESSAGE);
+					return; // No hace nada
+				}
+			}
+		});
+		scrollPane.setViewportView(tableSesion);
+		panel.add(scrollPane);
+
+		JLabel nomCine = new JLabel(cineSeleccionado);
+		nomCine.setBounds(25, 145, 143, 34);
+		panel.add(nomCine);
+
+		JLabel nomPelicula = new JLabel(nombrePelicula);
+		nomPelicula.setBounds(25, 212, 143, 34);
+		panel.add(nomPelicula);
+
+	}
+
+	public JPanel getPanel() {
+		return panel;
+	}
+
+	public void guardarDatosSesion(String cineSeleccionado, String nombrePelicula) {
+
+		ResumenPojo resumenPojo = new ResumenPojo(cineSeleccionado, nombrePelicula, duracion, fecha, horario, sala,
+				precio);
+		listaResumen.add(resumenPojo);
+		System.out.println(listaResumen);
+	}
+
+	
+	public void cargarTableSesion(String cineSeleccionado, String nombrePelicula) {
+
+		this.cineSeleccionado = cineSeleccionado;
+		this.nombrePelicula = nombrePelicula;
+
+		System.out.println(cineSeleccionado + nombrePelicula);
+
+		String[] columnas = { "Duracion", "Fecha", "Horario", "Sala", "Precio" };
+		DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
+
+		GestorSesion gestorSesion = new GestorSesion();
+		ArrayList<SesionTmp> sesiones = gestorSesion.obtenerSesionesPelicula(cineSeleccionado, nombrePelicula);
+
+		for (SesionTmp sesionActual : sesiones) {
+
+			modeloTabla.addRow(new Object[] { sesionActual.getDuracion(), sesionActual.getFecha(),
+					sesionActual.getHorario(), sesionActual.getNombreSala(), sesionActual.getPrecio() });
+		}
+
+		tableSesion.setModel(modeloTabla);
+
+		
+	}
+
 }

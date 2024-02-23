@@ -14,7 +14,7 @@ public class GestorLogin  {
 		
 		
 	}
-	public static boolean verificarCredenciales(String usuario, String contrasenna) {
+	public  boolean verificarCredenciales(String usuario, String contrasenna) {
 		ArrayList<Cliente> clientes = obtenerDatosLogin();
 		if (clientes != null) {
 			for (Cliente cliente : clientes) {
@@ -25,7 +25,7 @@ public class GestorLogin  {
 		}
 		return false; // Credenciales inválidas
 	}
-	private static ArrayList<Cliente> obtenerDatosLogin() {
+	private  ArrayList<Cliente> obtenerDatosLogin() {
 		ArrayList<Cliente> ret = null;
 
 		// SQL que queremos lanzar

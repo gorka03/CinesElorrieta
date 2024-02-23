@@ -25,7 +25,7 @@ public class Registro {
 	private JTextField textUsuario;
 	private JPasswordField passwordField;
 
-	public Registro(ArrayList<JPanel> paneles) {
+	public Registro(ArrayList<Object> paneles) {
 		panel = new JPanel();
 		panel.setBounds(0, 0, 650, 470);
 
@@ -97,15 +97,20 @@ public class Registro {
 				String usuario = textUsuario.getText();
 				String contrasenna = new String(passwordField.getPassword());
 
-				boolean usuarioCreado = GestorRegistro.guardarUsuarioEnBaseDeDatos(dni, nombre, apellido, genero,
+				GestorRegistro gestorRegistro = new GestorRegistro();
+				boolean usuarioCreado = gestorRegistro.guardarUsuarioEnBaseDeDatos(dni, nombre, apellido, genero,
 						usuario, contrasenna);
 
 				if (usuarioCreado) {
 					JOptionPane.showMessageDialog(panel, "Usuario creado correctamente", "Éxito",
 							JOptionPane.INFORMATION_MESSAGE);
-					
-					paneles.get(4).setVisible(true);
-					paneles.get(5).setVisible(false);
+					((Bienvenida) paneles.get(0)).getPanel().setVisible(false);
+					((Cines) paneles.get(1)).getPanel().setVisible(false);
+					((Sesion) paneles.get(2)).getPanel().setVisible(false);
+					((Resumen) paneles.get(3)).getPanel().setVisible(false);
+					((Login) paneles.get(4)).getPanel().setVisible(true);
+					((Registro) paneles.get(5)).getPanel().setVisible(false);
+					((GeneradorTicket) paneles.get(6)).getPanel().setVisible(false);
 
 				} else {
 

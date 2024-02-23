@@ -19,7 +19,7 @@ public class Resumen {
 	private JPanel panel = null;
 	private JTable table;
 
-	public Resumen(ArrayList<JPanel> paneles) {
+	public Resumen(ArrayList<Object> paneles) {
 		panel = new JPanel();
 		panel.setBounds(0, 0, 650, 470);
 		panel.setBackground(new Color(255, 255, 255));
@@ -39,8 +39,13 @@ public class Resumen {
 				if (opcion == JOptionPane.YES_OPTION) {
 
 					JOptionPane.showMessageDialog(panel, "Guardado correctamente ");
-					paneles.get(3).setVisible(false);
-					paneles.get(4).setVisible(true);
+					((Bienvenida) paneles.get(0)).getPanel().setVisible(false);
+					((Cines) paneles.get(1)).getPanel().setVisible(false);
+					((Sesion) paneles.get(2)).getPanel().setVisible(false);
+					((Resumen) paneles.get(3)).getPanel().setVisible(false);
+					((Login) paneles.get(4)).getPanel().setVisible(true);
+					((Registro) paneles.get(5)).getPanel().setVisible(false);
+					((GeneradorTicket) paneles.get(6)).getPanel().setVisible(false);
 				} else {
 					System.out.println("");
 				}
@@ -54,8 +59,13 @@ public class Resumen {
 		btnCancelar.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		btnCancelar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				paneles.get(1).setVisible(true);
-				paneles.get(3).setVisible(false);
+				((Bienvenida) paneles.get(0)).getPanel().setVisible(false);
+				((Cines) paneles.get(1)).getPanel().setVisible(true);
+				((Sesion) paneles.get(2)).getPanel().setVisible(false);
+				((Resumen) paneles.get(3)).getPanel().setVisible(false);
+				((Login) paneles.get(4)).getPanel().setVisible(false);
+				((Registro) paneles.get(5)).getPanel().setVisible(false);
+				((GeneradorTicket) paneles.get(6)).getPanel().setVisible(false);
 			}
 		});
 		btnCancelar.setBounds(120, 398, 117, 23);
@@ -68,6 +78,7 @@ public class Resumen {
 		panel.add(imgLogo);
 	}
 
+	
 	public JPanel getPanel() {
 		return panel;
 	}
