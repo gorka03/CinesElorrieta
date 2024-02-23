@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 import cinesElorrieta.controller.GestorSesion;
 import cinesElorrieta.modelo.ResumenPojo;
-import cinesElorrieta.modelo.SesionTmp;
+import cinesElorrieta.modelo.SesionPojo;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -28,6 +28,7 @@ public class Sesion {
 	private JTable tableSesion;
 	private JPanel panel = null;
 
+
 	private String cineSeleccionado = null;
 	private String nombrePelicula = null;
 	private String datosSesion = "";
@@ -38,9 +39,11 @@ public class Sesion {
 	private String sala = null;
 	private String precio = null;
 
-	ArrayList<ResumenPojo> listaResumen = new ArrayList<ResumenPojo>();
+	private ArrayList<ResumenPojo> listaResumen = null;
 
 	public Sesion(ArrayList<Object> paneles) {
+		listaResumen = new ArrayList<ResumenPojo>();
+		
 		panel = new JPanel();
 		panel.setBounds(0, 0, 650, 470);
 
@@ -102,9 +105,9 @@ public class Sesion {
 							}
 						}
 
-						String[] datosSeparados = datosSesion.split(", "); 
-
-						if (datosSeparados.length == numColumnas) { 
+						String[] datosSeparados = datosSesion.split(", ");
+						// no entra en el if 
+						if (datosSeparados.length == numColumnas) {
 							duracion = datosSeparados[0];
 							fecha = datosSeparados[1];
 							horario = datosSeparados[2];
@@ -115,6 +118,13 @@ public class Sesion {
 
 					guardarDatosSesion(cineSeleccionado, nombrePelicula);
 
+					Resumen resumen =((Resumen) paneles.get(3));
+					resumen.cargarTablaResumen(listaResumen);
+					
+					GeneradorTicket generadorTicket=((GeneradorTicket) paneles.get(6));
+					generadorTicket.cargarTablaGeneradorTicket(listaResumen);
+
+					
 				} else {
 
 					cineSeleccionado = null;
@@ -151,14 +161,6 @@ public class Sesion {
 		scrollPane.setViewportView(tableSesion);
 		panel.add(scrollPane);
 
-		JLabel nomCine = new JLabel(cineSeleccionado);
-		nomCine.setBounds(25, 145, 143, 34);
-		panel.add(nomCine);
-
-		JLabel nomPelicula = new JLabel(nombrePelicula);
-		nomPelicula.setBounds(25, 212, 143, 34);
-		panel.add(nomPelicula);
-
 	}
 
 	public JPanel getPanel() {
@@ -173,7 +175,6 @@ public class Sesion {
 		System.out.println(listaResumen);
 	}
 
-	
 	public void cargarTableSesion(String cineSeleccionado, String nombrePelicula) {
 
 		this.cineSeleccionado = cineSeleccionado;
@@ -185,9 +186,9 @@ public class Sesion {
 		DefaultTableModel modeloTabla = new DefaultTableModel(null, columnas);
 
 		GestorSesion gestorSesion = new GestorSesion();
-		ArrayList<SesionTmp> sesiones = gestorSesion.obtenerSesionesPelicula(cineSeleccionado, nombrePelicula);
+		ArrayList<SesionPojo> sesiones = gestorSesion.obtenerSesionesPelicula(cineSeleccionado, nombrePelicula);
 
-		for (SesionTmp sesionActual : sesiones) {
+		for (SesionPojo sesionActual : sesiones) {
 
 			modeloTabla.addRow(new Object[] { sesionActual.getDuracion(), sesionActual.getFecha(),
 					sesionActual.getHorario(), sesionActual.getNombreSala(), sesionActual.getPrecio() });
@@ -195,7 +196,8 @@ public class Sesion {
 
 		tableSesion.setModel(modeloTabla);
 
-		
 	}
+
+
 
 }

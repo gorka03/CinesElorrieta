@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.LineBorder;
+
+import cinesElorrieta.modelo.ResumenPojo;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -59,5 +62,9 @@ public class GeneradorTicket {
 
 	public JPanel getPanel() {
 		return panel;
+	}
+
+	public void cargarTablaGeneradorTicket(ArrayList<ResumenPojo> listaResumen) {
+		
 	}
 }

@@ -6,13 +6,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import cinesElorrieta.modelo.SesionTmp;
+import cinesElorrieta.modelo.SesionPojo;
 import cinesElorrieta.utils.DBUtils;
 
 public class GestorSesion {
 
-    public ArrayList<SesionTmp> obtenerSesionesPelicula(String cineSeleccionado , String nombrePelicula) {
-        ArrayList<SesionTmp> datosPelicula = new ArrayList<>();
+    public ArrayList<SesionPojo> obtenerSesionesPelicula(String cineSeleccionado , String nombrePelicula) {
+        ArrayList<SesionPojo> datosPelicula = new ArrayList<>();
         
 
         String sql = "SELECT p.duracion, p.precio, se.fecha, se.horario, s.nombre AS nombre_sala " +
@@ -44,7 +44,7 @@ public class GestorSesion {
                 String horario = resultSet.getString("horario");
                 String nombreSala = resultSet.getString("nombre_sala");
 
-                SesionTmp sesion = new SesionTmp(duracion, precio, fecha, horario, nombreSala);
+                SesionPojo sesion = new SesionPojo(duracion, precio, fecha, horario, nombreSala);
                 datosPelicula.add(sesion);
             }
 
